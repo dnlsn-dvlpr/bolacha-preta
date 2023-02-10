@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolacha Preta - Carrinho</title>
+</head>
+
+<body>
+    <h1>Bolacha Preta</h1>
+    <h2>Carrinho de Compras</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="produto">
+                <td>Acabou Chorare - Novos Baianos</td>
+                <td><label class="preco">R$ 49,90</label></td>
+                <td><input type="number" class="quantidade" value="1"></td>
+            </tr>
+            <tr class="produto">
+                <td>Construção - Chico Buarque</td>
+                <td><label class="preco">R$ 49,90</label></td>
+                <td><input type="number" class="quantidade" value="1"></td>
+            </tr>
+            <tr class="produto">
+                <td>Chega de Saudade - João Gilberto</td>
+                <td><label class="preco">R$ 49,90</label></td>
+                <td><input type="number" class="quantidade" value="1"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <th>Total</th>
+                <td><label id="total">R$ 149,70</label></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="javascripts/carrinho.js" type="text/javascript"></script>
+</body>
+
+</html>
