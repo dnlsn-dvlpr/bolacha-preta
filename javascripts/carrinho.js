@@ -10,38 +10,26 @@ function converteValorParaTexto(valor) {
 }
 
 function atualizarCampoTotal(valor) {
-    let total = document.getElementById("total");
-    total.innerHTML = converteValorParaTexto(valor);
+    let texto = converteValorParaTexto(valor);
+    $("#total").text(texto);
 }
 
 function calcularTotalProdutos() {
-    let produtos = document.getElementsByClassName("produto");
+    let produtos = $(".produto");
     let total = 0;
 
-    for (let i = 0; i < produtos.length; i++) {
-        let elementoPreco = produtos[i].getElementsByClassName("preco");
-        let textoPreco = elementoPreco[0].innerHTML;
-        let preco = converteTextoParaValor(textoPreco);
-
-        let elementoQuantidade = produtos[i].getElementsByClassName("quantidade");
-        let textoQuantidade = elementoQuantidade[0].value;
-        let quantidade = converteTextoParaValor(textoQuantidade);
-
-        let subTotal = quantidade * preco;
-        total += subTotal;
-    }
+    $(produtos).each(function (i, produto) {
+        let $produto = $(produtos[i]);
+        let quantidade = converteTextoParaValor($produto.find(".quantidade").val());
+        let preco = converteTextoParaValor($produto.find(".preco").text());
+        total += quantidade * preco;
+    });
 
     return total;
 }
 
-function aoCarregarDocumento() {
-    let camposQuantidade = document.getElementsByClassName("quantidade");
-
-    for (let i = 0; i < camposQuantidade.length; i++) {
-        camposQuantidade[i].onchange = function () {
-            atualizarCampoTotal(calcularTotalProdutos());
-        };
-    }
-}
-
-window.onload = aoCarregarDocumento;
+$(function () {
+    $(".quantidade").change(function () {
+        atualizarCampoTotal(calcularTotalProdutos());
+    });
+});
