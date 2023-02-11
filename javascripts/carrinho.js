@@ -1,5 +1,5 @@
 function converteTextoParaValor(texto) {
-    var textoLimpo = texto.replace("R$ ", "").replace(",", ".");
+    let textoLimpo = texto.replace("R$ ", "").replace(",", ".");
     return parseFloat(textoLimpo);
 }
 
@@ -34,15 +34,13 @@ function calcularTotalProdutos() {
     return total;
 }
 
-function aoMudarQuantidade() {
-    atualizarCampoTotal(calcularTotalProdutos());
-}
-
 function aoCarregarDocumento() {
     let camposQuantidade = document.getElementsByClassName("quantidade");
 
     for (let i = 0; i < camposQuantidade.length; i++) {
-        camposQuantidade[i].onchange = aoMudarQuantidade;
+        camposQuantidade[i].onchange = function () {
+            atualizarCampoTotal(calcularTotalProdutos());
+        };
     }
 }
 
